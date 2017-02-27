@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smartous.notingbook">
+    package="com.labs.notingbook">
 
     <application
         android:allowBackup="true"

@@ -1,4 +1,4 @@
-package com.smartous.notingbook;
+package com.labs.notingbook;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

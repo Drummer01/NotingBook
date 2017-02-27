@@ -1,4 +1,4 @@
-package com.smartous.notingbook;
+package com.labs.notingbook;
 
 import org.junit.Test;
 
