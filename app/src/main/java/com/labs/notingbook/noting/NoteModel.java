@@ -1,12 +1,15 @@
 package com.labs.notingbook.noting;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by Drummer on 28.02.2017.
  */
 
-public class NoteModel {
+public class NoteModel implements Parcelable {
 
     private String mName;
     private String mDescription;
@@ -14,6 +17,27 @@ public class NoteModel {
     private String mImagePath;
     private Date mCreationTime;
     private ImportanceLevel mImportance;
+
+    private NoteModel() {}
+
+    protected NoteModel(Parcel in) {
+        mName = in.readString();
+        mDescription = in.readString();
+        mText = in.readString();
+        mImagePath = in.readString();
+    }
+
+    public static final Creator<NoteModel> CREATOR = new Creator<NoteModel>() {
+        @Override
+        public NoteModel createFromParcel(Parcel in) {
+            return new NoteModel(in);
+        }
+
+        @Override
+        public NoteModel[] newArray(int size) {
+            return new NoteModel[size];
+        }
+    };
 
     public ImportanceLevel getImportance() {
         return mImportance;
@@ -61,6 +85,20 @@ public class NoteModel {
 
     public void setCreationTime(Date mCreationTime) {
         this.mCreationTime = mCreationTime;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeString(mName);
+        parcel.writeString(mDescription);
+        parcel.writeString(mText);
+        parcel.writeString(mImagePath);
     }
 
     public static class Builder {
