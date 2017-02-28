@@ -53,7 +53,6 @@ public class NoteCreateActivity extends AppCompatActivity implements View.OnClic
                         .withImportanceLevel(NoteModel.ImportanceLevel.createFromInt(checkedIndex))
                         .withImagePath((String)mImage.getTag())
                         .build();
-                Log.d("ADASDADSA", NoteModel.ImportanceLevel.createFromInt(checkedIndex).getLevel() + "");
                 Intent data = new Intent();
                 data.putExtra(NEW_NOTE, note);
 
@@ -77,7 +76,7 @@ public class NoteCreateActivity extends AppCompatActivity implements View.OnClic
         {
             Uri pickedImage = data.getData();
             mImage.setImageURI(pickedImage);
-            mImage.setTag(pickedImage.getPath());
+            mImage.setTag(pickedImage.toString());
         }
     }
 }
