@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,7 +35,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         public MyViewHolder(View view) {
             super(view);
 
-            noteTopImage = (ImageView) view.findViewById(R.id.note_top_image);
+         //   noteTopImage = (ImageView) view.findViewById(R.id.note_top_image);
             noteImportance = (ImageView) view.findViewById(R.id.note_importance);
 
             noteDateCreate = (TextView) view.findViewById(R.id.note_date_create);
@@ -53,12 +56,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     public void onBindViewHolder(NotesAdapter.MyViewHolder holder, int position) {
         NoteModel note = notesList.get(position);
 
-        holder.noteTopImage.setImageURI(Uri.parse(note.getImagePath()));
+       // holder.noteTopImage.setImageURI(Uri.parse(note.getImagePath()));
+
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd  hh:mm");
 
         holder.noteImportance.setImageResource(noteStatus[note.getImportance().getLevel()-1]);
         holder.noteTitle.setText(note.getName());
         holder.noteDescription.setText(note.getDescription());
-        holder.noteDateCreate.setText(note.getCreationTime().toString());
+        holder.noteDateCreate.setText(format.format(note.getCreationTime()));
     }
 
     @Override
