@@ -25,6 +25,8 @@ public class NoteModel implements Parcelable {
         mDescription = in.readString();
         mText = in.readString();
         mImagePath = in.readString();
+        mImportance = ImportanceLevel.createFromInt(in.readInt());
+        mCreationTime = (Date) in.readSerializable();
     }
 
     public static final Creator<NoteModel> CREATOR = new Creator<NoteModel>() {
@@ -99,6 +101,8 @@ public class NoteModel implements Parcelable {
         parcel.writeString(mDescription);
         parcel.writeString(mText);
         parcel.writeString(mImagePath);
+        parcel.writeInt(mImportance.getLevel());
+        parcel.writeSerializable(mCreationTime);
     }
 
     public static class Builder {
@@ -159,9 +163,9 @@ public class NoteModel implements Parcelable {
     }
 
     public enum ImportanceLevel {
-        One(1),
-        Two(2),
-        Three(3);
+        One(0),
+        Two(1),
+        Three(2);
 
         private int level;
 
