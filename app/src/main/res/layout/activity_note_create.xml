@@ -55,10 +55,19 @@
             android:drawableRight="@mipmap/ic_high_importance"/>
     </RadioGroup>
     <Button
+        android:visibility="gone"
         android:id="@+id/create_note_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
         android:text="@string/create"/>
+    <Button
+        android:visibility="gone"
+        android:id="@+id/edit_note_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:text="@string/save"/>
+
 
 </LinearLayout>

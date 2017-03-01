@@ -3,4 +3,8 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="create">Create</string>
+    <string name="option_menu_header">Options</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="save">Save</string>
 </resources>
