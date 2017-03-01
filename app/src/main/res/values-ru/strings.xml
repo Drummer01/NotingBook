@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NotingBook</string>
+    <string name="title">Название</string>
+    <string name="description">Описание</string>
+    <string name="create">Создать</string>
+    <string name="option_menu_header">Опции</string>
+    <string name="edit">Редактировать</string>
+    <string name="remove">Удалить</string>
+    <string name="save">Сохранить</string>
+    <string name="required">Обязательное поле</string>
+    <string name="sort">Сортировать</string>
+    <string name="create_new_note">Создать новую заметку</string>
+    <string name="search">Поиск</string>
+    <string name="filter_high_importancy">Высокая важность</string>
+    <string name="filter_medium_importancy">Средняя важность</string>
+    <string name="filter_low_importancy">Низкая важность</string>
+    <string name="filter_clear_importancy">Очистить фильтр</string>
+</resources>
