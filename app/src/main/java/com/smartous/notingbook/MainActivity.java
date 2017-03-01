@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mNotesRecycler.setAdapter(notesAdapter);
 
 
-        Intent createNewNoteIntent = new Intent(this, NoteCreateActivity.class);
-        startActivityForResult(createNewNoteIntent, ACTION_CREATE_NOTE);
+
     }
 
     @Override
@@ -88,6 +87,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_bar_item_create_note : {
+                Intent createNewNoteIntent = new Intent(this, NoteCreateActivity.class);
+                startActivityForResult(createNewNoteIntent, ACTION_CREATE_NOTE);
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
