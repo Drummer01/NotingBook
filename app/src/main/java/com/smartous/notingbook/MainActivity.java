@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            if(data == null) return;
             switch (requestCode) {
                 case ACTION_CREATE_NOTE : {
                     NoteModel note = data.getParcelableExtra(NoteCreateActivity.NEW_NOTE);
