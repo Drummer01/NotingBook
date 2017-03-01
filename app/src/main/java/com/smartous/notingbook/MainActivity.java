@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
@@ -58,5 +62,32 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
             }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList newListNote = new ArrayList();
+                for(NoteModel note : mNotes){
+                    if(note.getName().contains(newText))
+                        newListNote.add(note);
+                }
+                notesAdapter.setSearch(newListNote);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 }
