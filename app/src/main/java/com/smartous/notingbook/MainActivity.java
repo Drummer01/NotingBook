@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(editIntent, ACTION_EDIT_NOTE);
                 break;
             }
+
+            case R.id.context_menu_remove : {
+                mNotes.remove(notesAdapter.getPosition());
+                notesAdapter.notifyDataSetChanged();
+                break;
+            }
         }
 
         return super.onContextItemSelected(item);
