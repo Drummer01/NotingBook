@@ -3,10 +3,9 @@
     package="com.labs.notingbook">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_low_importance"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

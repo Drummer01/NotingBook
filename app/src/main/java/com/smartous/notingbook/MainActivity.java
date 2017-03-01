@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.context_menu_edit : {
+            case R.id.context_menu_edit: {
                 Intent editIntent = new Intent(this, NoteCreateActivity.class);
                 editIntent.putExtra(NoteCreateActivity.KEY_NOTE_MODEL, mNotes.get(notesAdapter.getPosition()));
                 editIntent.putExtra(NoteCreateActivity.KEY_NOTE_INDEX, notesAdapter.getPosition());
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
 
-            case R.id.context_menu_remove : {
+            case R.id.context_menu_remove: {
                 mNotes.remove(notesAdapter.getPosition());
                 notesAdapter.notifyDataSetChanged();
                 break;
@@ -90,22 +92,51 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if(data == null) return;
-            switch (requestCode) {
-                case ACTION_CREATE_NOTE : {
-                    NoteModel note = data.getParcelableExtra(NoteCreateActivity.NEW_NOTE);
-                    mNotes.add(note);
-                    notesAdapter.notifyDataSetChanged();
-                    break;
-                }
-
-                case ACTION_EDIT_NOTE : {
-                    int index = data.getIntExtra(NoteCreateActivity.KEY_NOTE_INDEX, -1);
-                    NoteModel note = data.getParcelableExtra(NoteCreateActivity.KEY_NOTE_MODEL);
-                    mNotes.set(index, note);
-                    notesAdapter.notifyDataSetChanged();
-                    break;
-                }
+        if (data == null) return;
+        switch (requestCode) {
+            case ACTION_CREATE_NOTE: {
+                NoteModel note = data.getParcelableExtra(NoteCreateActivity.NEW_NOTE);
+                mNotes.add(note);
+                notesAdapter.notifyDataSetChanged();
+                break;
             }
+
+            case ACTION_EDIT_NOTE: {
+                int index = data.getIntExtra(NoteCreateActivity.KEY_NOTE_INDEX, -1);
+                NoteModel note = data.getParcelableExtra(NoteCreateActivity.KEY_NOTE_MODEL);
+                mNotes.set(index, note);
+                notesAdapter.notifyDataSetChanged();
+                break;
+
+            }
+        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList newListNote = new ArrayList();
+                for(NoteModel note : mNotes){
+                    if(note.getName().contains(newText))
+                        newListNote.add(note);
+                }
+                notesAdapter.setSearch(newListNote);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

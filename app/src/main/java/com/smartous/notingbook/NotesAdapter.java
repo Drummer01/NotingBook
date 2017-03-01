@@ -18,6 +18,7 @@ import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder> {
     private final int[] noteStatus = {R.mipmap.ic_low_importance, R.mipmap.ic_medium_importance, R.mipmap.ic_high_importance};
-    private List<NoteModel> notesList;
+    private ArrayList<NoteModel> notesList;
 
     public int getPosition() {
         return position;
@@ -40,7 +41,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
     private int position = -1;
 
-    public NotesAdapter(List<NoteModel> notesList){
+    public NotesAdapter( ArrayList<NoteModel> notesList){
         this.notesList = notesList;
     }
 
@@ -97,5 +98,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return notesList.size();
+    }
+
+    public void setSearch(ArrayList<NoteModel> newListNote){
+        notesList = new ArrayList<>();
+        notesList.addAll(newListNote);
+        notifyDataSetChanged();
     }
 }
