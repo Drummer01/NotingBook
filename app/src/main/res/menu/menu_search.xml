@@ -8,16 +8,36 @@
         app:showAsAction="always|collapseActionView">
 
     </item>
-    <item
-        android:id="@+id/action_bar_item_sort"
-        android:title="@string/sort"
-        android:icon="@drawable/ic_sort_by_importancy"
-        app:showAsAction="ifRoom">
-    </item>
+
     <item
         android:id="@+id/action_bar_item_create_note"
         android:title="@string/create_new_note"
         android:icon="@drawable/ic_create_note"
         app:showAsAction="ifRoom">
+    </item>
+
+    <item
+        android:id="@+id/filter_high_importancy"
+        android:icon="@mipmap/ic_high_importance"
+        app:showAsAction="never"
+        android:title="@string/filter_high_importancy">
+    </item>
+    <item
+        android:id="@+id/filter_medium_importancy"
+        android:icon="@mipmap/ic_medium_importance"
+        app:showAsAction="never"
+        android:title="@string/filter_medium_importancy">
+    </item>
+    <item
+        android:id="@+id/filter_low_importancy"
+        android:icon="@mipmap/ic_low_importance"
+        app:showAsAction="never"
+        android:title="@string/filter_low_importancy">
+    </item>
+
+    <item
+        android:id="@+id/filter_clear_importancy"
+        app:showAsAction="never"
+        android:title="@string/filter_clear_importancy">
     </item>
 </menu>

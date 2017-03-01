@@ -11,4 +11,8 @@
     <string name="sort">Sort</string>
     <string name="create_new_note">Create new note</string>
     <string name="search">Search</string>
+    <string name="filter_high_importancy">High importancy</string>
+    <string name="filter_medium_importancy">Medium importancy</string>
+    <string name="filter_low_importancy">Low importancy</string>
+    <string name="filter_clear_importancy">Clear filter</string>
 </resources>

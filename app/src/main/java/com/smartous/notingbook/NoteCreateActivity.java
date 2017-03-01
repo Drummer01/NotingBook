@@ -63,7 +63,7 @@ public class NoteCreateActivity extends AppCompatActivity implements View.OnClic
         switch (view.getId()) {
             case R.id.create_note_btn : {
                 if(mTitle.getText().toString().trim().equals("")) {
-                    mTitle.setError("Required");
+                    mTitle.setError(getResources().getString(R.string.required));
                     break;
                 }
                 int checkedIndex = mImportance.indexOfChild(findViewById(mImportance.getCheckedRadioButtonId()));
@@ -91,7 +91,7 @@ public class NoteCreateActivity extends AppCompatActivity implements View.OnClic
 
             case R.id.edit_note_btn : {
                 if(mTitle.getText().toString().trim().equals("")) {
-                    mTitle.setError("Required");
+                    mTitle.setError(getResources().getString(R.string.required));
                     break;
                 }
                 int checkedIndex = mImportance.indexOfChild(findViewById(mImportance.getCheckedRadioButtonId()));

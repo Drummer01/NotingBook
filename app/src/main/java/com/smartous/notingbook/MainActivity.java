@@ -17,6 +17,7 @@ import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -97,6 +98,45 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(createNewNoteIntent, ACTION_CREATE_NOTE);
                 break;
             }
+
+            case R.id.filter_high_importancy : {
+                ArrayList<NoteModel> filtred = new ArrayList<>();
+                for(NoteModel model : mNotes) {
+                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Three)) {
+                        filtred.add(model);
+                    }
+                }
+                notesAdapter.setSearch(filtred);
+                break;
+            }
+
+            case R.id.filter_medium_importancy : {
+                ArrayList<NoteModel> filtred = new ArrayList<>();
+                for(NoteModel model : mNotes) {
+                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Two)) {
+                        filtred.add(model);
+                    }
+                }
+                notesAdapter.setSearch(filtred);
+                break;
+            }
+
+            case R.id.filter_low_importancy : {
+                ArrayList<NoteModel> filtred = new ArrayList<>();
+                for(NoteModel model : mNotes) {
+                    if(model.getImportance().equals(NoteModel.ImportanceLevel.One)) {
+                        filtred.add(model);
+                    }
+                }
+                notesAdapter.setSearch(filtred);
+                break;
+            }
+
+            case R.id.filter_clear_importancy : {
+                notesAdapter.setSearch(mNotes);
+                break;
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }
