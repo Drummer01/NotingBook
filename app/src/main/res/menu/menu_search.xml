@@ -17,6 +17,13 @@
     </item>
 
     <item
+        android:id="@+id/action_bar_item_settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item
         android:id="@+id/filter_high_importancy"
         android:icon="@mipmap/ic_high_importance"
         app:showAsAction="never"

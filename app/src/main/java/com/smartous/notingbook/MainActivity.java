@@ -101,15 +101,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
 
-            case R.id.filter_high_importancy : {
-//                ArrayList<NoteModel> filtred = new ArrayList<>();
-//                for(NoteModel model : mNotes) {
-//                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Three)) {
-//                        filtred.add(model);
-//                    }
-//                }
-//                notesAdapter.setSearch(filtred);
+            case R.id.action_bar_item_settings : {
                 startActivity(new Intent(this, SettingsActivity.class));
+                break;
+            }
+
+            case R.id.filter_high_importancy : {
+                ArrayList<NoteModel> filtred = new ArrayList<>();
+                for(NoteModel model : mNotes) {
+                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Three)) {
+                        filtred.add(model);
+                    }
+                }
+                notesAdapter.setSearch(filtred);
                 break;
             }
 

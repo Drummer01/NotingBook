@@ -17,4 +17,5 @@
     <string name="filter_clear_importancy">Clear filter</string>
     <string name="select_theme">Select theme</string>
     <string name="save_theme">Save theme</string>
+    <string name="settings">Settings</string>
 </resources>
