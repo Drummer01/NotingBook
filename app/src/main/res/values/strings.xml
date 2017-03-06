@@ -15,4 +15,6 @@
     <string name="filter_medium_importancy">Medium importancy</string>
     <string name="filter_low_importancy">Low importancy</string>
     <string name="filter_clear_importancy">Clear filter</string>
+    <string name="select_theme">Select theme</string>
+    <string name="save_theme">Save theme</string>
 </resources>

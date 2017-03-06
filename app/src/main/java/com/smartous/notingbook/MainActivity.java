@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.labs.notingbook.R;
+import com.labs.notingbook.SettingsActivity;
 import com.labs.notingbook.noting.NoteModel;
+import com.labs.notingbook.theming.ThemeManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(ThemeManager.getInstance(this).getCurrentThemeOrDefault());
         setContentView(R.layout.activity_main);
 
         NoteModel nm = new NoteModel.Builder()
@@ -55,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
         mNotesRecycler.setLayoutManager(llm);
         mNotesRecycler.setAdapter(notesAdapter);
 
-
-
-    }
+        //startActivity(new Intent(this, SettingsActivity.class));
+   }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -100,13 +102,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             case R.id.filter_high_importancy : {
-                ArrayList<NoteModel> filtred = new ArrayList<>();
-                for(NoteModel model : mNotes) {
-                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Three)) {
-                        filtred.add(model);
-                    }
-                }
-                notesAdapter.setSearch(filtred);
+//                ArrayList<NoteModel> filtred = new ArrayList<>();
+//                for(NoteModel model : mNotes) {
+//                    if(model.getImportance().equals(NoteModel.ImportanceLevel.Three)) {
+//                        filtred.add(model);
+//                    }
+//                }
+//                notesAdapter.setSearch(filtred);
+                startActivity(new Intent(this, SettingsActivity.class));
                 break;
             }
 

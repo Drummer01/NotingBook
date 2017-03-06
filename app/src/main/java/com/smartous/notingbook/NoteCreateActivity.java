@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
+import com.labs.notingbook.theming.ThemeManager;
 
 import java.util.Date;
 
@@ -30,6 +31,7 @@ public class NoteCreateActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(ThemeManager.getInstance(this).getCurrentThemeOrDefault());
         setContentView(R.layout.activity_note_create);
 
         mTitle = (TextView) findViewById(R.id.create_title);
