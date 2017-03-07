@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.labs.notingbook.R;
 import com.labs.notingbook.noting.NoteModel;
+import com.labs.notingbook.theming.ThemeManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,6 +63,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             noteDescription = (TextView) view.findViewById(R.id.note_description);
 
             card = (CardView) view;
+
+            ThemeManager tm = ThemeManager.getInstance(card.getContext());
+            ThemeManager.changeTextViewFontSize(noteDateCreate);
+            ThemeManager.changeTextViewFontSize(noteTitle);
+            ThemeManager.changeTextViewFontSize(noteDescription);
         }
     }
 
@@ -80,6 +86,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         if(note.getImagePath() != null) {
             holder.noteTopImage.setImageURI(Uri.parse(note.getImagePath()));
         }
+
         SimpleDateFormat format = new SimpleDateFormat("MMM dd  hh:mm");
         holder.noteImportance.setImageResource(noteStatus[note.getImportance().getLevel()]);
         holder.noteTitle.setText(note.getName());

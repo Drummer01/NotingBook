@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.labs.notingbook.theming.ThemeManager;
 import com.smartous.notingbook.MainActivity;
@@ -21,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     };
 
     private Spinner mThemeSpinner;
+    private NumberPicker mTextScaleNumberPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         mThemeSpinner = (Spinner) findViewById(R.id.theme_spinner);
         mThemeSpinner.setAdapter(spinnerAdapter);
 
+
+        mTextScaleNumberPicker = (NumberPicker) findViewById(R.id.number_picker_font_scale);
+        mTextScaleNumberPicker.setMinValue(100);
+        mTextScaleNumberPicker.setMaxValue(200);
+        mTextScaleNumberPicker.setValue(ThemeManager.getInstance(this).getCurrentTextScale());
+
+        ThemeManager.changeTextViewFontSize((TextView) findViewById(R.id.text));
+        ThemeManager.changeTextViewFontSize((TextView) findViewById(R.id.text1));
     }
 
     @Override
@@ -50,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 Log.d("index", index + "");
 
                 tm.setTheme(ThemeArray[index]);
+                tm.setCurrentTextScale(mTextScaleNumberPicker.getValue());
                 tm.saveTheme();
 
                 Intent intent = new Intent(this, MainActivity.class);
